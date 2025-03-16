@@ -49,6 +49,41 @@ yarn dev
 - React Router
 - React Bootstrap
 
+## Example Usage
+
+### Register a New User
+1. Navigate to `/register`.
+2. Enter an email and password.
+3. Click the **Register** button.
+
+### Login
+1. Navigate to `/`.
+2. Enter your email and password.
+3. Click the **Login** button.
+4. Alternatively, login with Google or GitHub.
+
+### Reset Password
+1. Navigate to `/reset`.
+2. Enter your email.
+3. Click **Reset Password**, and check your inbox for the reset link.
+
+### Logout
+1. After logging in, you will be redirected to /dashboard.
+
+2. The dashboard will display a welcome message and a logout button.
+
+3. Click Logout to sign out of your account.
+
+## Screenshots (Optional)
+
+| Feature         | Screenshot |
+|----------------|------------|
+| Login Page     | ![Login](./src/screenshots/login.png) |
+| Register Page  | ![Register](./src/screenshots/register.png) |
+| Dashboard      | ![Dashboard](./src/screenshots/dashboard.png) |
+| Reset Password    | ![Reset](./src/screenshots/reset.png) |
+
 ## License
 This project is licensed under the MIT License.
 
+You can preview the project using my CodeSandbox link: https://codesandbox.io/p/sandbox/2vr9ht

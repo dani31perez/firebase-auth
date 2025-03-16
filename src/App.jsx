@@ -8,7 +8,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebaseConfig";
 import ResetPassword from "./components/ResetPassword";
 
-
 function App() {
   const [user, setUser] = useState("");
 
