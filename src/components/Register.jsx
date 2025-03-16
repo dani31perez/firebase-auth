@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Container, Alert } from "react-bootstrap";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import { useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -10,7 +10,7 @@ function Register() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const hanleRegister = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -23,7 +23,7 @@ function Register() {
   return (
     <Container className=" mt-5">
       <h1 className="text-center">Register</h1>
-      <Form onSubmit={hanleRegister}>
+      <Form onSubmit={handleRegister}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -51,6 +51,7 @@ function Register() {
           {error}
         </Alert>
       )}
+      <Link className="d-inline-block mt-5" to="/">You have an account? Login</Link>
     </Container>
   );
 }

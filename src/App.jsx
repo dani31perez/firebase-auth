@@ -6,6 +6,7 @@ import DashBoard from "./components/DashBoard";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebaseConfig";
+import ResetPassword from "./components/ResetPassword";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={user ? <DashBoard /> :<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/reset" element={<ResetPassword />} />
         <Route path="/dashboard" element={user ? <DashBoard /> :<Navigate to="/"/>} />
       </Routes>
     </BrowserRouter>

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Button, Form, Container } from "react-bootstrap";
+import { Button, Form, Container, Alert } from "react-bootstrap";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -26,6 +27,16 @@ function Login() {
 
   const handleSingIn = async () => {
     const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      navigate("/dashboard");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleSignGithub = async () => {
+    const provider = new GithubAuthProvider();
     try {
       await signInWithPopup(auth, provider);
       navigate("/dashboard");
@@ -65,12 +76,8 @@ function Login() {
         <Button variant="outline-warning" size="lg" onClick={handleSingIn}>
           Login with google
         </Button>
-        <Button
-          variant="outline-warning"
-          size="lg"
-          onClick={() => navigate("/register")}
-        >
-          Register
+        <Button variant="outline-info" size="lg" onClick={handleSignGithub}>
+          Login with github
         </Button>
       </div>
       {error && (
@@ -78,6 +85,10 @@ function Login() {
           {error}
         </Alert>
       )}
+      <Container className="d-flex justify-content-between mt-4">
+        <Link to="/reset">Forgot password?</Link>
+        <Link to="/register">Register</Link>
+      </Container>
     </Container>
   );
 }
